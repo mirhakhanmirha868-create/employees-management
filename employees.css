@@ -33,7 +33,7 @@ body {
 }
 
 
-/* ================= SIDEBAR ================= */
+/*  SIDEBAR  */
 
 .sidebar {
     position: fixed;
@@ -107,7 +107,7 @@ body {
 }
 
 
-/* ================= USER ================= */
+/*USER */
 
 .sidebar-bottom {
     margin-top: auto;
@@ -162,7 +162,7 @@ body {
 }
 
 
-/* ================= MAIN ================= */
+/* MAIN*/
 
 .main {
     margin-left: 235px;
@@ -204,7 +204,7 @@ body {
 }
 
 
-/* ================= HEADER ================= */
+/*  HEADER  */
 
 .employee-header {
     margin-top: 42px;
@@ -249,7 +249,7 @@ body {
 }
 
 
-/* ================= SEARCH ================= */
+/*  SEARCH = */
 
 .search-box {
     height: 52px;
@@ -283,7 +283,7 @@ body {
 }
 
 
-/* ================= TABLE ================= */
+/*  TABLE  */
 
 .employee-card {
     margin-top: 22px;
@@ -335,7 +335,7 @@ td:first-child {
 }
 
 
-/* ================= STATUS ================= */
+/* STATUS  */
 
 .status {
     display: inline-flex;
@@ -373,7 +373,7 @@ td:first-child {
 }
 
 
-/* ================= ACTION BUTTONS ================= */
+/* ACTION BUTTONS */
 
 .actions {
     display: flex;
@@ -409,7 +409,7 @@ td:first-child {
 }
 
 
-/* ================= EMPTY ================= */
+/*  EMPTY  */
 
 .empty-message {
     text-align: center;
@@ -436,7 +436,7 @@ td:first-child {
 }
 
 
-/* ================= MODAL ================= */
+/*MODAL  */
 
 .modal {
     position: fixed;
@@ -510,7 +510,7 @@ td:first-child {
 }
 
 
-/* ================= FORM ================= */
+/* FO */
 
 .input-group {
     margin-bottom: 16px;
@@ -521,9 +521,7 @@ td:first-child {
     font-size: 13px;
     font-weight: bold;
     color: var(--text);
-    margin-bottom: 7px;
-}
-
+    margin-bottom: 7p
 .input-group input,
 .input-group select {
     width: 100%;
@@ -563,7 +561,7 @@ td:first-child {
 }
 
 
-/* ================= VIEW MODAL ================= */
+/*VIEW MODAL */
 
 .view-box {
     max-width: 450px;
@@ -614,7 +612,7 @@ td:first-child {
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE  */
 
 @media (max-width: 850px) {
 
