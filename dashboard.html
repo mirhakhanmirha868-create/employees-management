@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Staffly</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <span>Staffly</span>
+        </div>
+        <div class="menu-title">
+            MAIN
+        </div>
+        <nav class="menu">
+            <a href="#" class="active">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="employees.html">
+                <i class="fa-solid fa-users"></i>
+                <span>Employees</span>
+            </a>
+            <a href="#">
+                <i class="fa-solid fa-building"></i>
+                <span>Departments</span>
+            </a>
+        </nav>
+        <div class="menu-title">
+            WORKSPACE
+        </div> 
+        <nav class="menu">
+
+            <a href="#">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Clients</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>Campaigns</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Platforms</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+
+        <div class="menu-title">
+            SYSTEM
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <!-- User -->
+
+        <div class="sidebar-bottom">
+
+            <div class="user">
+
+                <div class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="user-info">
+
+                    <strong id="user-name">
+                        User
+                    </strong>
+
+                    <small id="user-email">
+                        user@email.com
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <a href="index.html" class="logout">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main">
+
+
+        <!-- Top -->
+
+        <div class="topbar">
+
+            <div>
+
+                <p class="breadcrumb">
+                    Workspace / Dashboard
+                </p>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button id="theme-toggle">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+     
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        All Employees
+                    </span>
+
+                    <h2 id="total-employees">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Currently Active
+                    </span>
+
+                    <h2 id="active-employees">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-user-xmark"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Currently Inactive
+                    </span>
+
+                    <h2 id="inactive-employees">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Active This Month
+                    </span>
+
+                    <h2 id="monthly-employees">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+        <section class="charts">
+
+
+            <!-- Department Chart -->
+
+            <div class="chart-card">
+
+                <div class="chart-heading">
+
+                    <div>
+
+                        <h2>
+                            Employees by Department
+                        </h2>
+
+                        <p>
+                            Team distribution
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-wrapper">
+
+                    <canvas id="departmentChart"></canvas>
+
+                </div>
+
+
+                <div class="empty-message"
+                     id="department-empty">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <p>
+                        No employee data available yet
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Status Chart -->
+
+            <div class="chart-card">
+
+                <div class="chart-heading">
+
+                    <div>
+
+                        <h2>
+                            Employee Status
+                        </h2>
+
+                        <p>
+                            Active vs inactive
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-chart-wrapper">
+
+                    <canvas id="statusChart"></canvas>
+
+                </div>
+
+
+                <div class="empty-message"
+                     id="status-empty">
+
+                    <i class="fa-solid fa-chart-pie"></i>
+
+                    <p>
+                        No employee data available yet
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+        <section class="recent-card">
+
+
+            <div class="recent-heading">
+
+                <div>
+
+                    <h2>
+                        Recent Employees
+                    </h2>
+
+                    <p>
+                        Latest team members
+                    </p>
+
+                </div>
+
+                <a href="#">
+                    View All
+                </a>
+
+            </div>
+
+
+
+            <div class="table-header">
+
+                <span>
+                    Employee
+                </span>
+
+                <span>
+                    Department
+                </span>
+
+                <span>
+                    Position
+                </span>
+
+                <span>
+                    Status
+                </span>
+
+            </div>
+
+
+
+            <div class="empty-employees">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>
+                    No employees yet
+                </h3>
+
+                <p>
+                    Add employees to see them here.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+  
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
