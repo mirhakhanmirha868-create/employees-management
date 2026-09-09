@@ -18,7 +18,7 @@ if (!employees) {
     employees = [
         {
             id: 1,
-            name: "Ali Khan",
+            name: "mahnoor",
             email: "ali@gmail.com",
             department: "IT",
             position: "Web Developer",
@@ -26,7 +26,7 @@ if (!employees) {
         },
         {
             id: 2,
-            name: "Sara Ahmed",
+            name: "kinza hashmi",
             email: "sara@gmail.com",
             department: "HR",
             position: "HR Manager",
@@ -34,7 +34,7 @@ if (!employees) {
         },
         {
             id: 3,
-            name: "Hamza Malik",
+            name: "sufiyan ali",
             email: "hamza@gmail.com",
             department: "Finance",
             position: "Accountant",
