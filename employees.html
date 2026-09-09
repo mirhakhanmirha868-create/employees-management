@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employees | Staffly</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="employees.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </span>
+            Staffly
+        </div>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <nav class="menu">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="employees.html" class="active">
+                <i class="fa-solid fa-users"></i>
+                <span>Employees</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-building"></i>
+                <span>Departments</span>
+            </a>
+
+        </nav>
+
+        <p class="menu-title">WORKSPACE</p>
+
+        <nav class="menu">
+
+            <a href="#">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Clients</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>Campaigns</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Platforms</span>
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <p class="menu-title">SYSTEM</p>
+
+        <nav class="menu">
+
+            <a href="#">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="user">
+
+                <div class="user-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="user-info">
+                    <h4 id="user-name">User</h4>
+                    <p id="user-email">user@email.com</p>
+                </div>
+
+            </div>
+
+            <button class="logout" id="logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <p class="breadcrumb">Workspace / Employees</p>
+                <h1>Employees</h1>
+            </div>
+
+            <button id="theme-toggle" class="theme-btn">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+        </header>
+
+
+        <!-- Employee Heading -->
+
+        <section class="employee-header">
+
+            <div>
+                <h2>All Employees</h2>
+                <p>Manage your employees and their information.</p>
+            </div>
+
+            <button class="add-btn" id="addEmployee">
+                <i class="fa-solid fa-plus"></i>
+                Add Employee
+            </button>
+
+        </section>
+
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchEmployee"
+                placeholder="Search employees..."
+            >
+
+        </div>
+
+
+        <!-- Employee Table -->
+
+        <section class="employee-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="employee-list"></tbody>
+
+            </table>
+
+
+            <div class="empty-message" id="empty-message">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>No Employees Found</h3>
+
+                <p>Add your first employee to get started.</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Add / Edit Modal -->
+
+    <div class="modal" id="employeeModal">
+
+        <div class="modal-box">
+
+            <button class="close-btn" id="closeModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2 id="modal-title">Add Employee</h2>
+
+            <p>Add employee information below.</p>
+
+
+            <form id="employeeForm">
+
+                <div class="input-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="employeeName"
+                        placeholder="Enter full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="employeeEmail"
+                        placeholder="Enter email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Department</label>
+
+                    <select id="department" required>
+
+                        <option value="">Select Department</option>
+
+                        <option>HR</option>
+                        <option>IT</option>
+                        <option>Finance</option>
+                        <option>Marketing</option>
+                        <option>Sales</option>
+                        <option>Accounts</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Position</label>
+
+                    <input
+                        type="text"
+                        id="position"
+                        placeholder="e.g. Manager"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Status</label>
+
+                    <select id="status" required>
+
+                        <option value="">Select Status</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+
+                    </select>
+
+                </div>
+
+
+                <button type="submit" class="save-btn" id="save-btn">
+                    Add Employee
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- View Modal -->
+
+    <div class="modal" id="viewModal">
+
+        <div class="modal-box view-box">
+
+            <button class="close-btn" id="closeView">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="view-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h2 id="view-name">Employee Name</h2>
+
+            <div class="view-details">
+
+                <p>
+                    <strong>Email:</strong>
+                    <span id="view-email"></span>
+                </p>
+
+                <p>
+                    <strong>Department:</strong>
+                    <span id="view-department"></span>
+                </p>
+
+                <p>
+                    <strong>Position:</strong>
+                    <span id="view-position"></span>
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    <span id="view-status"></span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="employees.js"></script>
+
+</body>
+</html>
