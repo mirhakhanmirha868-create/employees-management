@@ -10,12 +10,16 @@ const employeeList = document.getElementById("employee-list");
 const emptyMessage = document.getElementById("empty-message");
 const searchEmployee = document.getElementById("searchEmployee");
 
+
 let employees = JSON.parse(localStorage.getItem("employees"));
+
 
 /* Default Employees */
 
 if (!employees) {
+
     employees = [
+
         {
             id: 1,
             name: "mahnoor",
@@ -24,6 +28,7 @@ if (!employees) {
             position: "Web Developer",
             status: "Active"
         },
+
         {
             id: 2,
             name: "kinza hashmi",
@@ -32,6 +37,7 @@ if (!employees) {
             position: "HR Manager",
             status: "Active"
         },
+
         {
             id: 3,
             name: "sufiyan ali",
@@ -40,21 +46,29 @@ if (!employees) {
             position: "Accountant",
             status: "Inactive"
         }
+
     ];
 
-    localStorage.setItem("employees", JSON.stringify(employees));
+    localStorage.setItem(
+        "employees",
+        JSON.stringify(employees)
+    );
 }
+
 
 let editId = null;
 
 
 /* Theme */
 
-const themeButton = document.getElementById("theme-toggle");
+const themeButton =
+    document.getElementById("theme-toggle");
+
 
 themeButton.addEventListener("click", function () {
 
     document.body.classList.toggle("dark-mode");
+
 
     if (document.body.classList.contains("dark-mode")) {
 
@@ -70,6 +84,7 @@ themeButton.addEventListener("click", function () {
 
         localStorage.setItem("theme", "light");
     }
+
 });
 
 
@@ -84,7 +99,9 @@ if (localStorage.getItem("theme") === "dark") {
 
 /* User */
 
-const savedUser = localStorage.getItem("stafflyUser");
+const savedUser =
+    localStorage.getItem("stafflyUser");
+
 
 if (savedUser) {
 
@@ -96,6 +113,36 @@ if (savedUser) {
     document.getElementById("user-email").textContent =
         user.email;
 }
+
+
+/* Mobile Menu */
+
+const menuToggle =
+    document.getElementById("menu-toggle");
+
+const sidebar =
+    document.getElementById("sidebar");
+
+const overlay =
+    document.getElementById("overlay");
+
+
+menuToggle.addEventListener("click", function () {
+
+    sidebar.classList.add("show");
+
+    overlay.classList.add("show");
+
+});
+
+
+overlay.addEventListener("click", function () {
+
+    sidebar.classList.remove("show");
+
+    overlay.classList.remove("show");
+
+});
 
 
 /* Add Employee */
@@ -113,20 +160,25 @@ addEmployee.addEventListener("click", function () {
     employeeForm.reset();
 
     modal.classList.add("show");
+
 });
 
 
 /* Close Add/Edit */
 
 closeModal.addEventListener("click", function () {
+
     modal.classList.remove("show");
+
 });
 
 
 /* Close View */
 
 closeView.addEventListener("click", function () {
+
     viewModal.classList.remove("show");
+
 });
 
 
@@ -136,17 +188,24 @@ employeeForm.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
+
     const employeeData = {
 
-        name: document.getElementById("employeeName").value,
+        name:
+            document.getElementById("employeeName").value,
 
-        email: document.getElementById("employeeEmail").value,
+        email:
+            document.getElementById("employeeEmail").value,
 
-        department: document.getElementById("department").value,
+        department:
+            document.getElementById("department").value,
 
-        position: document.getElementById("position").value,
+        position:
+            document.getElementById("position").value,
 
-        status: document.getElementById("status").value
+        status:
+            document.getElementById("status").value
+
     };
 
 
@@ -177,7 +236,9 @@ employeeForm.addEventListener("submit", function (e) {
             }
 
             return employee;
+
         });
+
     }
 
 
@@ -186,6 +247,7 @@ employeeForm.addEventListener("submit", function (e) {
         JSON.stringify(employees)
     );
 
+
     employeeForm.reset();
 
     modal.classList.remove("show");
@@ -193,6 +255,7 @@ employeeForm.addEventListener("submit", function (e) {
     editId = null;
 
     displayEmployees();
+
 });
 
 
@@ -202,29 +265,42 @@ function displayEmployees(list = employees) {
 
     employeeList.innerHTML = "";
 
+
     if (list.length === 0) {
 
         emptyMessage.style.display = "block";
 
         return;
+
     }
+
 
     emptyMessage.style.display = "none";
 
 
     list.forEach(function (employee) {
 
-        const row = document.createElement("tr");
+        const row =
+            document.createElement("tr");
+
 
         row.innerHTML = `
 
-            <td>${employee.name}</td>
+            <td>
+                ${employee.name}
+            </td>
 
-            <td>${employee.email}</td>
+            <td>
+                ${employee.email}
+            </td>
 
-            <td>${employee.department}</td>
+            <td>
+                ${employee.department}
+            </td>
 
-            <td>${employee.position}</td>
+            <td>
+                ${employee.position}
+            </td>
 
             <td>
 
@@ -273,10 +349,14 @@ function displayEmployees(list = employees) {
                 </div>
 
             </td>
+
         `;
 
+
         employeeList.appendChild(row);
+
     });
+
 }
 
 
@@ -284,9 +364,12 @@ function displayEmployees(list = employees) {
 
 function viewEmployee(id) {
 
-    const employee = employees.find(function (e) {
-        return e.id === id;
-    });
+    const employee =
+        employees.find(function (e) {
+
+            return e.id === id;
+
+        });
 
 
     document.getElementById("view-name").textContent =
@@ -306,6 +389,7 @@ function viewEmployee(id) {
 
 
     viewModal.classList.add("show");
+
 }
 
 
@@ -313,9 +397,12 @@ function viewEmployee(id) {
 
 function editEmployee(id) {
 
-    const employee = employees.find(function (e) {
-        return e.id === id;
-    });
+    const employee =
+        employees.find(function (e) {
+
+            return e.id === id;
+
+        });
 
 
     editId = id;
@@ -345,6 +432,7 @@ function editEmployee(id) {
 
 
     modal.classList.add("show");
+
 }
 
 
@@ -356,14 +444,18 @@ function deleteEmployee(id) {
         "Are you sure you want to delete this employee?"
     );
 
+
     if (!confirmDelete) {
         return;
     }
 
 
-    employees = employees.filter(function (employee) {
-        return employee.id !== id;
-    });
+    employees =
+        employees.filter(function (employee) {
+
+            return employee.id !== id;
+
+        });
 
 
     localStorage.setItem(
@@ -373,6 +465,7 @@ function deleteEmployee(id) {
 
 
     displayEmployees();
+
 }
 
 
@@ -380,33 +473,57 @@ function deleteEmployee(id) {
 
 searchEmployee.addEventListener("input", function () {
 
-    const value = this.value.toLowerCase();
+    const value =
+        this.value.toLowerCase();
 
 
-    const filtered = employees.filter(function (employee) {
+    const filtered =
+        employees.filter(function (employee) {
 
-        return (
-            employee.name.toLowerCase().includes(value) ||
-            employee.email.toLowerCase().includes(value) ||
-            employee.department.toLowerCase().includes(value) ||
-            employee.position.toLowerCase().includes(value)
-        );
+            return (
 
-    });
+                employee.name
+                    .toLowerCase()
+                    .includes(value)
+
+                ||
+
+                employee.email
+                    .toLowerCase()
+                    .includes(value)
+
+                ||
+
+                employee.department
+                    .toLowerCase()
+                    .includes(value)
+
+                ||
+
+                employee.position
+                    .toLowerCase()
+                    .includes(value)
+
+            );
+
+        });
 
 
     displayEmployees(filtered);
+
 });
 
 
 /* Logout */
 
-document.getElementById("logout").addEventListener("click", function () {
+document.getElementById("logout")
+    .addEventListener("click", function () {
 
-    localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("isLoggedIn");
 
-    window.location.href = "login.html";
-});
+        window.location.href = "login.html";
+
+    });
 
 
 /* Start */
