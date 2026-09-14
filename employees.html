@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Employees | Staffly</title>
+
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <link rel="stylesheet" href="employees.css">
 </head>
-<body>
-    <!-- Sidebar -->
 
-    <aside class="sidebar">
+<body>
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
 
         <div class="logo">
-            <span class="logo-icon">
+            <div class="logo-icon">
                 <i class="fa-solid fa-users"></i>
-            </span>
-            Staffly
+            </div>
+            <span>Staffly</span>
         </div>
 
         <p class="menu-title">MAIN MENU</p>
@@ -39,14 +45,13 @@
                 <span>Departments</span>
             </a>
 
-        </nav>
-
-        <p class="menu-title">WORKSPACE</p>
-
-        <nav class="menu">
+            <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Workspace</span>
+            </a>
 
             <a href="#">
-                <i class="fa-solid fa-user-group"></i>
+                <i class="fa-solid fa-user-tie"></i>
                 <span>Clients</span>
             </a>
 
@@ -65,19 +70,12 @@
                 <span>Reports</span>
             </a>
 
-        </nav>
-
-        <p class="menu-title">SYSTEM</p>
-
-        <nav class="menu">
-
             <a href="#">
                 <i class="fa-solid fa-gear"></i>
                 <span>Settings</span>
             </a>
 
         </nav>
-
 
         <div class="sidebar-bottom">
 
@@ -104,30 +102,39 @@
 
 
     <!-- Main -->
-
     <main class="main">
 
         <header class="topbar">
 
-            <div>
-                <p class="breadcrumb">Workspace / Employees</p>
-                <h1>Employees</h1>
+            <div class="left-top">
+
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <p class="breadcrumb">
+                        Workspace / <span>Employees</span>
+                    </p>
+
+                    <h1>Employees</h1>
+                </div>
+
             </div>
 
-            <button id="theme-toggle" class="theme-btn">
+            <button class="theme-btn" id="theme-toggle">
                 <i class="fa-solid fa-moon"></i>
             </button>
 
         </header>
 
 
-        <!-- Employee Heading -->
-
+        <!-- Employee Header -->
         <section class="employee-header">
 
             <div>
-                <h2>All Employees</h2>
-                <p>Manage your employees and their information.</p>
+                <h2>Employee Management</h2>
+                <p>Add, manage and view your employees.</p>
             </div>
 
             <button class="add-btn" id="addEmployee">
@@ -139,7 +146,6 @@
 
 
         <!-- Search -->
-
         <div class="search-box">
 
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -154,36 +160,37 @@
 
 
         <!-- Employee Table -->
-
         <section class="employee-card">
 
-            <table>
+            <div class="table-container">
 
-                <thead>
+                <table>
 
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Department</th>
-                        <th>Position</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Position</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
 
-                </thead>
+                    <tbody id="employee-list"></tbody>
 
-                <tbody id="employee-list"></tbody>
-
-            </table>
+                </table>
 
 
-            <div class="empty-message" id="empty-message">
+                <div class="empty-message" id="empty-message">
 
-                <i class="fa-solid fa-users"></i>
+                    <i class="fa-solid fa-users"></i>
 
-                <h3>No Employees Found</h3>
+                    <h3>No Employees Found</h3>
 
-                <p>Add your first employee to get started.</p>
+                    <p>Add an employee to see them here.</p>
+
+                </div>
 
             </div>
 
@@ -202,87 +209,96 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
+            <div class="modal-icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+
             <h2 id="modal-title">Add Employee</h2>
 
-            <p>Add employee information below.</p>
+            <p>Enter employee information below.</p>
 
 
             <form id="employeeForm">
 
                 <div class="input-group">
+                    <label>Employee Name</label>
 
-                    <label>Full Name</label>
+                    <div class="form-field">
+                        <i class="fa-solid fa-user"></i>
 
-                    <input
-                        type="text"
-                        id="employeeName"
-                        placeholder="Enter full name"
-                        required
-                    >
-
+                        <input
+                            type="text"
+                            id="employeeName"
+                            placeholder="Enter name"
+                            required
+                        >
+                    </div>
                 </div>
 
 
                 <div class="input-group">
+                    <label>Email Address</label>
 
-                    <label>Email</label>
+                    <div class="form-field">
+                        <i class="fa-solid fa-envelope"></i>
 
-                    <input
-                        type="email"
-                        id="employeeEmail"
-                        placeholder="Enter email"
-                        required
-                    >
-
+                        <input
+                            type="email"
+                            id="employeeEmail"
+                            placeholder="Enter email"
+                            required
+                        >
+                    </div>
                 </div>
 
 
                 <div class="input-group">
-
                     <label>Department</label>
 
-                    <select id="department" required>
+                    <div class="form-field">
+                        <i class="fa-solid fa-building"></i>
 
-                        <option value="">Select Department</option>
-
-                        <option>HR</option>
-                        <option>IT</option>
-                        <option>Finance</option>
-                        <option>Marketing</option>
-                        <option>Sales</option>
-                        <option>Accounts</option>
-
-                    </select>
-
+                        <select id="department" required>
+                            <option value="">Select Department</option>
+                            <option value="HR">HR</option>
+                            <option value="IT">IT</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Accounts">Accounts</option>
+                        </select>
+                    </div>
                 </div>
 
 
                 <div class="input-group">
-
                     <label>Position</label>
 
-                    <input
-                        type="text"
-                        id="position"
-                        placeholder="e.g. Manager"
-                        required
-                    >
+                    <div class="form-field">
+                        <i class="fa-solid fa-briefcase"></i>
 
+                        <input
+                            type="text"
+                            id="position"
+                            placeholder="Enter position"
+                            required
+                        >
+                    </div>
                 </div>
 
 
                 <div class="input-group">
-
                     <label>Status</label>
 
-                    <select id="status" required>
+                    <div class="form-field">
+                        <i class="fa-solid fa-circle-check"></i>
 
-                        <option value="">Select Status</option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-
-                    </select>
-
+                        <select id="status" required>
+                            <option value="">Select Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
                 </div>
 
 
@@ -311,9 +327,16 @@
                 <i class="fa-solid fa-user"></i>
             </div>
 
-            <h2 id="view-name">Employee Name</h2>
+            <h2>Employee Details</h2>
+
+            <p>Employee information</p>
 
             <div class="view-details">
+
+                <p>
+                    <strong>Name:</strong>
+                    <span id="view-name"></span>
+                </p>
 
                 <p>
                     <strong>Email:</strong>
