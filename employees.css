@@ -7,7 +7,7 @@
     --text: #3B153A;
     --gray: #756875;
     --border: #eadfea;
-    --light-gold: #fff3d8;
+    --light-gold: #fff6df;
 }
 
 body.dark-mode {
@@ -19,6 +19,8 @@ body.dark-mode {
     --light-gold: #392b1e;
 }
 
+
+/* RESET */
 
 * {
     margin: 0;
@@ -35,7 +37,7 @@ body {
 }
 
 
-/* Sidebar */
+/* ================= SIDEBAR ================= */
 
 .sidebar {
     position: fixed;
@@ -117,7 +119,7 @@ body {
 }
 
 
-/* User */
+/* ================= USER ================= */
 
 .sidebar-bottom {
     margin-top: auto;
@@ -171,7 +173,7 @@ body {
 }
 
 
-/* Main */
+/* ================= MAIN ================= */
 
 .main {
     margin-left: 235px;
@@ -232,11 +234,10 @@ body {
     background: var(--gold);
     color: var(--plum);
     cursor: pointer;
-    font-size: 15px;
 }
 
 
-/* Employee Header */
+/* ================= EMPLOYEE HEADER ================= */
 
 .employee-header {
     margin-top: 40px;
@@ -287,7 +288,7 @@ body {
 }
 
 
-/* Search */
+/* ================= SEARCH ================= */
 
 .search-box {
     height: 52px;
@@ -323,7 +324,7 @@ body {
 }
 
 
-/* Table */
+/* ================= TABLE ================= */
 
 .employee-card {
     margin-top: 22px;
@@ -359,8 +360,8 @@ th {
 
 
 body.dark-mode th {
-    color: var(--gold);
     background: rgba(240,201,135,.06);
+    color: var(--gold);
 }
 
 
@@ -378,17 +379,12 @@ td:first-child {
 }
 
 
-tbody tr {
-    transition: .3s;
-}
-
-
 tbody tr:hover {
     background: rgba(240,201,135,.08);
 }
 
 
-/* Status */
+/* ================= STATUS ================= */
 
 .status {
     display: inline-flex;
@@ -412,7 +408,7 @@ tbody tr:hover {
 }
 
 
-/* Actions */
+/* ================= ACTION BUTTONS ================= */
 
 .actions {
     display: flex;
@@ -453,7 +449,7 @@ tbody tr:hover {
 }
 
 
-/* Empty */
+/* ================= EMPTY ================= */
 
 .empty-message {
     text-align: center;
@@ -482,18 +478,23 @@ tbody tr:hover {
 }
 
 
-/* Modal */
+/* ================================================= */
+/* ================= MODAL ========================= */
+/* ================================================= */
 
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(20,8,19,.68);
-    backdrop-filter: blur(6px);
+    background: rgba(25, 8, 23, .72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
     display: none;
     align-items: center;
     justify-content: center;
+
     padding: 20px;
-    z-index: 1100;
+    z-index: 2000;
 }
 
 
@@ -502,26 +503,39 @@ tbody tr:hover {
 }
 
 
+/* Modal Box */
+
 .modal-box {
     width: 100%;
     max-width: 520px;
+
     max-height: 90vh;
     overflow-y: auto;
+
     background: var(--white);
+
     padding: 35px;
-    border-radius: 22px;
+
+    border-radius: 24px;
+
     position: relative;
+
+    border: 1px solid rgba(240,201,135,.35);
+
     border-top: 5px solid var(--gold);
-    box-shadow: 0 25px 70px rgba(0,0,0,.25);
-    animation: modalIn .3s ease;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.35);
+
+    animation: modalOpen .3s ease;
 }
 
 
-@keyframes modalIn {
+@keyframes modalOpen {
 
     from {
         opacity: 0;
-        transform: translateY(20px) scale(.96);
+        transform: translateY(25px) scale(.96);
     }
 
     to {
@@ -534,32 +548,46 @@ tbody tr:hover {
 /* Modal Icon */
 
 .modal-icon {
-    width: 65px;
-    height: 65px;
+    width: 68px;
+    height: 68px;
+
     margin: 0 auto 15px;
-    background: var(--gold);
-    color: var(--plum);
-    border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 25px;
+
+    background: var(--gold);
+    color: var(--plum);
+
+    border-radius: 20px;
+
+    font-size: 26px;
+
+    box-shadow: 0 8px 20px rgba(240,201,135,.25);
 }
 
+
+/* Modal Heading */
 
 .modal-box h2 {
     text-align: center;
     color: var(--text);
-    font-size: 26px;
+
+    font-size: 27px;
+
     margin-bottom: 7px;
 }
 
 
 .modal-box > p {
     text-align: center;
+
     color: var(--gray);
+
     font-size: 13px;
-    margin-bottom: 25px;
+
+    margin-bottom: 28px;
 }
 
 
@@ -567,16 +595,23 @@ tbody tr:hover {
 
 .close-btn {
     position: absolute;
+
     top: 17px;
     right: 18px;
-    width: 36px;
-    height: 36px;
+
+    width: 38px;
+    height: 38px;
+
     border: none;
     border-radius: 50%;
+
     background: #f4edf4;
     color: var(--plum);
+
     font-size: 17px;
+
     cursor: pointer;
+
     transition: .3s;
 }
 
@@ -587,124 +622,235 @@ tbody tr:hover {
 }
 
 
-/* Form */
+/* ================= FORM ================= */
 
 .input-group {
-    margin-bottom: 17px;
+    margin-bottom: 18px;
 }
 
 
-.input-group label {
+.input-group > label {
     display: block;
+
     color: var(--text);
+
     font-size: 13px;
+
     font-weight: bold;
-    margin-bottom: 7px;
+
+    margin-bottom: 8px;
 }
 
 
-.form-field {
-    height: 48px;
+/* Field */
+
+.form-field,
+.input-field {
+    width: 100%;
+    height: 50px;
+
     display: flex;
     align-items: center;
+
     gap: 12px;
-    padding: 0 14px;
-    background: var(--white);
+
+    padding: 0 15px;
+
+    background: var(--cream);
+
     border: 1px solid var(--border);
-    border-radius: 10px;
+
+    border-radius: 11px;
+
     transition: .3s;
 }
 
 
-.form-field i {
-    color: var(--gold);
+/* Field Icon */
+
+.form-field > i,
+.input-field > i {
+    color: var(--plum);
+
+    min-width: 18px;
+
+    text-align: center;
+
     font-size: 15px;
 }
 
 
-.form-field:focus-within {
+/* Focus */
+
+.form-field:focus-within,
+.input-field:focus-within {
+    background: var(--white);
+
     border-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(240,201,135,.18);
+
+    box-shadow:
+        0 0 0 4px rgba(240,201,135,.18);
 }
 
 
+/* Input */
+
 .form-field input,
-.form-field select {
+.form-field select,
+.input-field input,
+.input-field select {
     width: 100%;
     height: 100%;
+
     border: none;
     outline: none;
+
     background: transparent;
+
     color: var(--text);
+
     font-size: 14px;
 }
 
 
-.form-field select {
+.form-field input::placeholder,
+.input-field input::placeholder {
+    color: #a99ca8;
+}
+
+
+.form-field select,
+.input-field select {
     cursor: pointer;
 }
 
 
-/* Save */
+/* Select option */
+
+.form-field select option,
+.input-field select option {
+    background: white;
+    color: #3B153A;
+}
+
+
+/* ================= SAVE BUTTON ================= */
 
 .save-btn {
     width: 100%;
-    height: 50px;
-    margin-top: 5px;
+    height: 51px;
+
+    margin-top: 7px;
+
     border: none;
-    border-radius: 10px;
+    border-radius: 11px;
+
     background: var(--plum);
     color: var(--gold);
+
     font-size: 15px;
     font-weight: bold;
+
     cursor: pointer;
+
     transition: .3s;
 }
 
 
 .save-btn:hover {
     background: var(--dark-plum);
+
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(59,21,58,.25);
+
+    box-shadow:
+        0 10px 25px rgba(59,21,58,.25);
 }
 
 
-/* View */
+/* ================================================= */
+/* ================= VIEW MODAL ==================== */
+/* ================================================= */
 
 .view-box {
-    max-width: 460px;
+    max-width: 480px;
+
     text-align: center;
+
+    padding: 38px;
 }
 
 
+/* View Icon */
+
 .view-icon {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 15px;
-    background: var(--gold);
-    color: var(--plum);
-    border-radius: 50%;
+    width: 78px;
+    height: 78px;
+
+    margin: 0 auto 16px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+
+    background: var(--gold);
+    color: var(--plum);
+
+    border-radius: 22px;
+
+    font-size: 30px;
+
+    box-shadow:
+        0 10px 25px rgba(240,201,135,.25);
 }
 
+
+.view-box h2 {
+    font-size: 27px;
+
+    margin-bottom: 7px;
+}
+
+
+.view-box > p {
+    margin-bottom: 25px;
+}
+
+
+/* Details Card */
 
 .view-details {
-    margin-top: 25px;
-    padding: 8px 20px;
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 5px 22px;
+
     text-align: left;
-    background: rgba(240,201,135,.12);
-    border: 1px solid rgba(240,201,135,.35);
-    border-radius: 15px;
+
+    background: var(--cream);
+
+    border: 1px solid rgba(240,201,135,.45);
+
+    border-radius: 17px;
+
+    overflow: hidden;
 }
 
 
+/* Details */
+
 .view-details p {
-    padding: 14px 0;
+    display: flex;
+    align-items: center;
+
+    min-height: 55px;
+
+    padding: 10px 0;
+
     border-bottom: 1px solid var(--border);
+
     color: var(--gray);
+
     font-size: 13px;
 }
 
@@ -715,20 +861,29 @@ tbody tr:hover {
 
 
 .view-details strong {
-    display: inline-block;
-    width: 105px;
+    min-width: 105px;
+
     color: var(--text);
+
+    font-size: 13px;
 }
 
 
-/* Overlay */
+.view-details span {
+    color: var(--gray);
+
+    word-break: break-word;
+}
+
+
+/* ================================================= */
+/* ================= MOBILE ======================== */
+/* ================================================= */
 
 .overlay {
     display: none;
 }
 
-
-/* Responsive */
 
 @media (max-width: 850px) {
 
@@ -756,9 +911,12 @@ tbody tr:hover {
 
     .overlay.show {
         display: block;
+
         position: fixed;
         inset: 0;
+
         background: rgba(0,0,0,.45);
+
         z-index: 900;
     }
 }
@@ -778,8 +936,11 @@ tbody tr:hover {
 
     .employee-header {
         margin-top: 28px;
+
         flex-direction: column;
+
         align-items: flex-start;
+
         padding: 22px;
     }
 
@@ -804,27 +965,81 @@ tbody tr:hover {
     }
 
 
+    /* Modal */
+
     .modal {
-        padding: 15px;
+        padding: 14px;
     }
 
 
     .modal-box {
+        width: 100%;
+
+        max-height: 92vh;
+
         padding: 30px 20px;
-        max-height: 90vh;
+
+        border-radius: 20px;
     }
 
 
-    .modal-icon,
-    .view-icon {
+    .modal-icon {
         width: 58px;
         height: 58px;
+
+        border-radius: 17px;
+
         font-size: 22px;
     }
 
 
     .modal-box h2 {
-        font-size: 22px;
+        font-size: 23px;
+    }
+
+
+    .modal-box > p {
+        font-size: 12px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+
+    .form-field,
+    .input-field {
+        height: 48px;
+    }
+
+
+    .save-btn {
+        height: 49px;
+    }
+
+
+    /* View */
+
+    .view-box {
+        padding: 30px 18px;
+    }
+
+
+    .view-icon {
+        width: 62px;
+        height: 62px;
+
+        border-radius: 18px;
+
+        font-size: 24px;
+    }
+
+
+    .view-box h2 {
+        font-size: 23px;
     }
 
 
@@ -833,7 +1048,12 @@ tbody tr:hover {
     }
 
 
+    .view-details p {
+        min-height: 52px;
+    }
+
+
     .view-details strong {
-        width: 90px;
+        min-width: 90px;
     }
 }
